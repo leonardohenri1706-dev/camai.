@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cam AI - Gestão de Viveiros</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "tertiary-fixed": "#ffdcbd",
+                        "on-error": "#ffffff",
+                        "surface-variant": "#e1e3e4",
+                        "on-tertiary": "#ffffff",
+                        "on-surface-variant": "#3e4850",
+                        "outline-variant": "#bec8d2",
+                        "on-primary-container": "#003751",
+                        "surface": "#f8f9fa",
+                        "surface-container": "#edeeef",
+                        "surface-dim": "#d9dadb",
+                        "on-surface": "#191c1d",
+                        "secondary-fixed": "#c9e6ff",
+                        "error": "#ba1a1a",
+                        "on-secondary": "#ffffff",
+                        "inverse-primary": "#89ceff",
+                        "tertiary-fixed-dim": "#ffb86e",
+                        "on-primary-fixed": "#001e2f",
+                        "on-background": "#191c1d",
+                        "on-tertiary-fixed-variant": "#693c00",
+                        "on-secondary-container": "#3d637d",
+                        "inverse-on-surface": "#f0f1f2",
+                        "primary-fixed": "#c9e6ff",
+                        "surface-container-low": "#f3f4f5",
+                        "surface-tint": "#006591",
+                        "tertiary-container": "#de8712",
+                        "secondary": "#3c627d",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed-dim": "#a5cbe9",
+                        "background": "#f8f9fa",
+                        "on-secondary-fixed": "#001e2f",
+                        "on-secondary-fixed-variant": "#234b64",
+                        "tertiary": "#8a5100",
+                        "on-tertiary-fixed": "#2c1600",
+                        "surface-container-high": "#e7e8e9",
+                        "on-tertiary-container": "#4d2b00",
+                        "on-primary": "#ffffff",
+                        "primary": "#006591",
+                        "surface-container-highest": "#e1e3e4",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed-variant": "#004c6e",
+                        "inverse-surface": "#2e3132",
+                        "secondary-container": "#b8dffe",
+                        "outline": "#6e7881",
+                        "surface-bright": "#f8f9fa",
+                        "primary-fixed-dim": "#89ceff",
+                        "error-container": "#ffdad6",
+                        "primary-container": "#0ea5e9"
+                    },
+                    fontFamily: {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" },
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .text-13px { font-size: 13px; line-height: 1.2; }
+        .ghost-border { outline: 1px solid rgba(190, 200, 210, 0.15); }
+    </style>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- SideNavBar -->
+<aside class="bg-slate-100 dark:bg-slate-950 h-screen w-20 hover:w-64 transition-all duration-300 fixed left-0 top-0 z-50 overflow-hidden flex flex-col py-6 gap-2 group ease-in-out transition-all duration-300 tonal-layering-no-borders">
+<div class="px-6 mb-8 flex items-center gap-4">
+<div class="w-8 h-8 rounded-lg bg-sky-600 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-white text-xl">waves</span>
+</div>
+<div class="opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+<p class="font-black text-sky-800 dark:text-sky-300 font-inter tracking-tighter text-[13px]">Cam AI</p>
+<p class="text-[10px] text-slate-500 uppercase tracking-widest">Precision Aqua</p>
+</div>
+</div>
+<nav class="flex-1 flex flex-col gap-1">
+<a class="flex items-center gap-4 px-6 py-3 text-slate-500 dark:text-slate-400 hover:text-sky-600 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="opacity-0 group-hover:opacity-100 whitespace-nowrap font-inter tracking-tighter text-[13px] font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-3 border-l-4 border-sky-600 bg-sky-100/50 dark:bg-sky-900/20 text-sky-800 dark:text-sky-200 font-inter tracking-tighter text-[13px] font-medium" href="#">
+<span class="material-symbols-outlined">tsunami</span>
+<span class="opacity-0 group-hover:opacity-100 whitespace-nowrap">Viveiros</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-3 text-slate-500 dark:text-slate-400 hover:text-sky-600 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">straighten</span>
+<span class="opacity-0 group-hover:opacity-100 whitespace-nowrap font-inter tracking-tighter text-[13px] font-medium">Biometria</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-3 text-slate-500 dark:text-slate-400 hover:text-sky-600 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="opacity-0 group-hover:opacity-100 whitespace-nowrap font-inter tracking-tighter text-[13px] font-medium">Inventário</span>
+</a>
+</nav>
+<div class="mt-auto flex flex-col gap-1">
+<a class="flex items-center gap-4 px-6 py-3 text-slate-500 dark:text-slate-400 hover:text-sky-600 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="opacity-0 group-hover:opacity-100 whitespace-nowrap font-inter tracking-tighter text-[13px] font-medium">Configurações</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-3 text-slate-500 dark:text-slate-400 hover:text-sky-600 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">help_outline</span>
+<span class="opacity-0 group-hover:opacity-100 whitespace-nowrap font-inter tracking-tighter text-[13px] font-medium">Suporte</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Wrapper -->
+<main class="ml-20 transition-all duration-300 min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<header class="bg-slate-50/80 dark:bg-slate-900/80 backdrop-blur-md docked full-width top-0 sticky z-40 no-border tonal-shift-bg flex justify-between items-center w-full px-6 py-3">
+<div class="flex items-center gap-6">
+<div class="text-lg font-bold text-sky-900 dark:text-sky-100 bg-slate-200 dark:bg-slate-800 px-4 py-1.5 rounded-full font-inter">
+                    Fazenda Águas Claras
+                </div>
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">search</span>
+<input class="bg-surface-container-low border-none rounded-full pl-10 pr-4 py-1.5 text-13px w-64 focus:ring-1 focus:ring-primary" placeholder="Buscar viveiro..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 text-slate-500 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 rounded-full transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-slate-500 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 rounded-full transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</header>
+<!-- Content Canvas -->
+<div class="p-8 flex-1 flex flex-col gap-8 max-w-[1600px] mx-auto w-full">
+<!-- Quick Pond Status Summary (Mini-cards) -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest p-4 rounded-xl ghost-border flex items-center justify-between">
+<div>
+<p class="label-sm text-on-surface-variant font-semibold tracking-tighter uppercase text-[10px]">Total Viveiros</p>
+<p class="display-md text-primary leading-tight font-bold text-2xl">42</p>
+</div>
+<div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">grid_view</span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest p-4 rounded-xl ghost-border flex items-center justify-between">
+<div>
+<p class="label-sm text-on-surface-variant font-semibold tracking-tighter uppercase text-[10px]">Povoamento Ativo</p>
+<p class="display-md text-primary leading-tight font-bold text-2xl">28</p>
+</div>
+<div class="w-10 h-10 rounded-full bg-secondary-fixed flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">water_drop</span>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest p-4 rounded-xl ghost-border flex items-center justify-between">
+<div>
+<p class="label-sm text-on-surface-variant font-semibold tracking-tighter uppercase text-[10px]">Área Total</p>
+<div class="flex items-baseline gap-1">
+<p class="display-md text-primary leading-tight font-bold text-2xl">154.5</p>
+<span class="text-[10px] text-on-surface-variant font-medium">ha</span>
+</div>
+</div>
+<div class="w-10 h-10 rounded-full bg-tertiary-fixed flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">layers</span>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="bg-surface-container-lowest p-4 rounded-xl ghost-border flex items-center justify-between">
+<div>
+<p class="label-sm text-on-surface-variant font-semibold tracking-tighter uppercase text-[10px]">Eficiência Operacional</p>
+<p class="display-md text-primary leading-tight font-bold text-2xl">92%</p>
+</div>
+<div class="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-700">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">speed</span>
+</div>
+</div>
+</div>
+<!-- Operations Section -->
+<section class="bg-surface-container-lowest rounded-xl ghost-border flex flex-col flex-1 overflow-hidden">
+<!-- Header Actions -->
+<div class="px-6 py-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-surface-container-low/30">
+<div>
+<h1 class="headline-sm font-semibold tracking-tight text-on-surface">Gestão de Viveiros</h1>
+<p class="text-13px text-on-surface-variant">Monitoramento de ciclos e densidade populacional</p>
+</div>
+<div class="flex items-center gap-2">
+<button class="bg-secondary-container text-on-secondary-container px-4 py-2 rounded-md text-13px font-semibold flex items-center gap-2 hover:bg-secondary-fixed transition-colors">
+<span class="material-symbols-outlined text-[18px]">upload_file</span>
+                            Importar Excel (CSV)
+                        </button>
+<button class="bg-primary text-on-primary px-4 py-2 rounded-md text-13px font-semibold flex items-center gap-2 hover:opacity-90 transition-all shadow-sm">
+<span class="material-symbols-outlined text-[18px]">download_2</span>
+                            Exportar Relatório
+                        </button>
+</div>
+</div>
+<!-- High-density Data Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-outline-variant/10">
+<th class="label-sm text-on-surface-variant font-bold px-4 py-3 uppercase tracking-wider">ID Viveiro</th>
+<th class="label-sm text-on-surface-variant font-bold px-4 py-3 uppercase tracking-wider">Área (ha)</th>
+<th class="label-sm text-on-surface-variant font-bold px-4 py-3 uppercase tracking-wider">Densidade (cam/m²)</th>
+<th class="label-sm text-on-surface-variant font-bold px-4 py-3 uppercase tracking-wider">Tipo Povoamento</th>
+<th class="label-sm text-on-surface-variant font-bold px-4 py-3 uppercase tracking-wider">Data Povoamento</th>
+<th class="label-sm text-on-surface-variant font-bold px-4 py-3 uppercase tracking-wider">Dias de Cultivo</th>
+<th class="label-sm text-on-surface-variant font-bold px-4 py-3 uppercase tracking-wider">Status</th>
+<th class="label-sm text-on-surface-variant font-bold px-4 py-3 uppercase tracking-wider text-right">Ações</th>
+</tr>
+</thead>
+<tbody class="text-13px text-on-surface">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-highest transition-colors group">
+<td class="px-4 py-2 font-semibold">VIV-001</td>
+<td class="px-4 py-2">3.45</td>
+<td class="px-4 py-2">85</td>
+<td class="px-4 py-2">Intensivo</td>
+<td class="px-4 py-2">12/10/2023</td>
+<td class="px-4 py-2">45</td>
+<td class="px-4 py-2">
+<span class="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full text-[11px] font-bold">Ativo</span>
+</td>
+<td class="px-4 py-2 text-right">
+<button class="p-1 text-slate-400 hover:text-primary"><span class="material-symbols-outlined text-lg">more_vert</span></button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-highest transition-colors group">
+<td class="px-4 py-2 font-semibold">VIV-002</td>
+<td class="px-4 py-2">4.12</td>
+<td class="px-4 py-2">120</td>
+<td class="px-4 py-2">Super-Intensivo</td>
+<td class="px-4 py-2">05/11/2023</td>
+<td class="px-4 py-2">21</td>
+<td class="px-4 py-2">
+<span class="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full text-[11px] font-bold">Ativo</span>
+</td>
+<td class="px-4 py-2 text-right">
+<button class="p-1 text-slate-400 hover:text-primary"><span class="material-symbols-outlined text-lg">more_vert</span></button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-highest transition-colors group">
+<td class="px-4 py-2 font-semibold">VIV-003</td>
+<td class="px-4 py-2">2.88</td>
+<td class="px-4 py-2">--</td>
+<td class="px-4 py-2">Semi-Intensivo</td>
+<td class="px-4 py-2">--</td>
+<td class="px-4 py-2">0</td>
+<td class="px-4 py-2">
+<span class="bg-amber-100 text-amber-800 px-2 py-0.5 rounded-full text-[11px] font-bold">Em Preparação</span>
+</td>
+<td class="px-4 py-2 text-right">
+<button class="p-1 text-slate-400 hover:text-primary"><span class="material-symbols-outlined text-lg">more_vert</span></button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-highest transition-colors group">
+<td class="px-4 py-2 font-semibold">VIV-004</td>
+<td class="px-4 py-2">5.00</td>
+<td class="px-4 py-2">90</td>
+<td class="px-4 py-2">Intensivo</td>
+<td class="px-4 py-2">01/08/2023</td>
+<td class="px-4 py-2">115</td>
+<td class="px-4 py-2">
+<span class="bg-slate-200 text-slate-600 px-2 py-0.5 rounded-full text-[11px] font-bold">Despescado</span>
+</td>
+<td class="px-4 py-2 text-right">
+<button class="p-1 text-slate-400 hover:text-primary"><span class="material-symbols-outlined text-lg">more_vert</span></button>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-surface-container-highest transition-colors group">
+<td class="px-4 py-2 font-semibold">VIV-005</td>
+<td class="px-4 py-2">3.20</td>
+<td class="px-4 py-2">85</td>
+<td class="px-4 py-2">Intensivo</td>
+<td class="px-4 py-2">15/10/2023</td>
+<td class="px-4 py-2">42</td>
+<td class="px-4 py-2">
+<span class="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full text-[11px] font-bold">Ativo</span>
+</td>
+<td class="px-4 py-2 text-right">
+<button class="p-1 text-slate-400 hover:text-primary"><span class="material-symbols-outlined text-lg">more_vert</span></button>
+</td>
+</tr>
+<!-- Row 6 -->
+<tr class="hover:bg-surface-container-highest transition-colors group">
+<td class="px-4 py-2 font-semibold">VIV-006</td>
+<td class="px-4 py-2">2.50</td>
+<td class="px-4 py-2">--</td>
+<td class="px-4 py-2">Super-Intensivo</td>
+<td class="px-4 py-2">--</td>
+<td class="px-4 py-2">0</td>
+<td class="px-4 py-2">
+<span class="bg-amber-100 text-amber-800 px-2 py-0.5 rounded-full text-[11px] font-bold">Em Preparação</span>
+</td>
+<td class="px-4 py-2 text-right">
+<button class="p-1 text-slate-400 hover:text-primary"><span class="material-symbols-outlined text-lg">more_vert</span></button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination / Footer -->
+<div class="px-6 py-3 border-t border-outline-variant/5 bg-surface-container-low/30 flex justify-between items-center">
+<p class="text-[11px] text-on-surface-variant font-medium uppercase tracking-wider">Mostrando 1-6 de 42 viveiros</p>
+<div class="flex gap-1">
+<button class="p-1.5 rounded bg-surface-container-lowest ghost-border text-on-surface hover:bg-surface-container-high transition-colors"><span class="material-symbols-outlined text-sm">chevron_left</span></button>
+<button class="px-2.5 py-1 text-13px font-bold bg-primary text-white rounded">1</button>
+<button class="px-2.5 py-1 text-13px font-bold hover:bg-surface-container-high rounded transition-colors">2</button>
+<button class="px-2.5 py-1 text-13px font-bold hover:bg-surface-container-high rounded transition-colors">3</button>
+<button class="p-1.5 rounded bg-surface-container-lowest ghost-border text-on-surface hover:bg-surface-container-high transition-colors"><span class="material-symbols-outlined text-sm">chevron_right</span></button>
+</div>
+</div>
+</section>
+</div>
+<!-- FloatingAIButton -->
+<div class="z-[100] cursor-pointer fixed bottom-4 right-4 rounded-xl p-4 flex items-center gap-2 bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl shadow-[0_12px_32px_-4px_rgba(0,30,47,0.12)] hover:scale-105 hover:bg-white/90 dark:hover:bg-slate-800/90 transition-transform slide-up-fade-in group">
+<span class="material-symbols-outlined text-sky-600 dark:text-sky-400" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="font-inter text-sm font-semibold text-sky-600 dark:text-sky-400">Cam AI Copilot</span>
+<div class="absolute -top-2 -right-2 w-5 h-5 bg-tertiary-container rounded-full flex items-center justify-center text-[10px] text-white font-bold">3</div>
+</div>
+</main>
+</body></html>

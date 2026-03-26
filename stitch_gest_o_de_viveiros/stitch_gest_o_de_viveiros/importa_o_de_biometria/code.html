@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-fixed": "#ffdcbd",
+              "on-error": "#ffffff",
+              "surface-variant": "#e1e3e4",
+              "on-tertiary": "#ffffff",
+              "on-surface-variant": "#3e4850",
+              "outline-variant": "#bec8d2",
+              "on-primary-container": "#003751",
+              "surface": "#f8f9fa",
+              "surface-container": "#edeeef",
+              "surface-dim": "#d9dadb",
+              "on-surface": "#191c1d",
+              "secondary-fixed": "#c9e6ff",
+              "error": "#ba1a1a",
+              "on-secondary": "#ffffff",
+              "inverse-primary": "#89ceff",
+              "tertiary-fixed-dim": "#ffb86e",
+              "on-primary-fixed": "#001e2f",
+              "on-background": "#191c1d",
+              "on-tertiary-fixed-variant": "#693c00",
+              "on-secondary-container": "#3d637d",
+              "inverse-on-surface": "#f0f1f2",
+              "primary-fixed": "#c9e6ff",
+              "surface-container-low": "#f3f4f5",
+              "surface-tint": "#006591",
+              "tertiary-container": "#de8712",
+              "secondary": "#3c627d",
+              "on-error-container": "#93000a",
+              "secondary-fixed-dim": "#a5cbe9",
+              "background": "#f8f9fa",
+              "on-secondary-fixed": "#001e2f",
+              "on-secondary-fixed-variant": "#234b64",
+              "tertiary": "#8a5100",
+              "on-tertiary-fixed": "#2c1600",
+              "surface-container-high": "#e7e8e9",
+              "on-tertiary-container": "#4d2b00",
+              "on-primary": "#ffffff",
+              "primary": "#006591",
+              "surface-container-highest": "#e1e3e4",
+              "surface-container-lowest": "#ffffff",
+              "on-primary-fixed-variant": "#004c6e",
+              "inverse-surface": "#2e3132",
+              "secondary-container": "#b8dffe",
+              "outline": "#6e7881",
+              "surface-bright": "#f8f9fa",
+              "primary-fixed-dim": "#89ceff",
+              "error-container": "#ffdad6",
+              "primary-container": "#0ea5e9"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .ghost-border { outline: 1px solid rgba(190, 200, 210, 0.15); }
+        @keyframes progress {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
+        .animate-progress {
+            animation: progress 2s ease-in-out forwards;
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface selection:bg-primary-container selection:text-on-primary-container overflow-hidden">
+<!-- SideNavBar -->
+<aside class="bg-slate-100 dark:bg-slate-950 font-inter tracking-tighter text-[13px] font-medium h-screen w-20 hover:w-64 transition-all duration-300 fixed left-0 top-0 z-50 overflow-hidden flex flex-col h-full py-6 gap-2 ease-in-out">
+<div class="px-6 mb-8 flex items-center gap-4">
+<div class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-white text-lg" style="font-variation-settings: 'FILL' 1;">egg</span>
+</div>
+<div class="whitespace-nowrap overflow-hidden">
+<p class="font-black text-sky-800 dark:text-sky-300 text-base">Cam AI</p>
+<p class="text-[10px] text-slate-500 uppercase tracking-widest">Precision Aqua</p>
+</div>
+</div>
+<nav class="flex-1">
+<a class="flex items-center gap-4 px-6 py-3 text-slate-500 dark:text-slate-400 hover:text-sky-600 hover:bg-slate-200 dark:hover:bg-slate-800 transition-all" href="#">
+<span class="material-symbols-outlined shrink-0" data-icon="dashboard">dashboard</span>
+<span class="whitespace-nowrap">Dashboard</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-3 text-slate-500 dark:text-slate-400 hover:text-sky-600 hover:bg-slate-200 dark:hover:bg-slate-800 transition-all" href="#">
+<span class="material-symbols-outlined shrink-0" data-icon="tsunami">tsunami</span>
+<span class="whitespace-nowrap">Viveiros</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-3 border-l-4 border-sky-600 bg-sky-100/50 dark:bg-sky-900/20 text-sky-800 dark:text-sky-200 transition-all" href="#">
+<span class="material-symbols-outlined shrink-0" data-icon="Straighten">straighten</span>
+<span class="whitespace-nowrap">Biometria</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-3 text-slate-500 dark:text-slate-400 hover:text-sky-600 hover:bg-slate-200 dark:hover:bg-slate-800 transition-all" href="#">
+<span class="material-symbols-outlined shrink-0" data-icon="inventory_2">inventory_2</span>
+<span class="whitespace-nowrap">Inventário</span>
+</a>
+</nav>
+<div class="mt-auto border-t border-slate-200/50 pt-4">
+<a class="flex items-center gap-4 px-6 py-3 text-slate-500 dark:text-slate-400 hover:text-sky-600 hover:bg-slate-200 dark:hover:bg-slate-800 transition-all" href="#">
+<span class="material-symbols-outlined shrink-0" data-icon="settings">settings</span>
+<span class="whitespace-nowrap">Configurações</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-3 text-slate-500 dark:text-slate-400 hover:text-sky-600 hover:bg-slate-200 dark:hover:bg-slate-800 transition-all" href="#">
+<span class="material-symbols-outlined shrink-0" data-icon="help_outline">help_outline</span>
+<span class="whitespace-nowrap">Suporte</span>
+</a>
+</div>
+</aside>
+<main class="ml-20 flex flex-col min-h-screen">
+<!-- TopNavBar -->
+<header class="bg-slate-50/80 dark:bg-slate-900/80 backdrop-blur-md font-inter tracking-tight text-sm font-medium docked full-width top-0 sticky z-40 flex justify-between items-center w-full px-6 py-3">
+<div class="flex items-center gap-4">
+<div class="text-lg font-bold text-sky-900 dark:text-sky-100 bg-slate-200 dark:bg-slate-800 px-4 py-1.5 rounded-full">
+                    Fazenda Águas Claras
+                </div>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">search</span>
+<input class="pl-9 pr-4 py-1.5 bg-surface-container-low border-none rounded-lg text-xs w-64 focus:ring-1 focus:ring-primary outline-none transition-all" placeholder="Buscar viveiro ou lote..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 text-slate-500 hover:bg-slate-200/50 rounded-lg transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="flex items-center gap-2 pl-2 pr-1 py-1 rounded-full bg-surface-container hover:bg-surface-container-high transition-all">
+<span class="text-xs font-semibold text-on-surface-variant">João Técnico</span>
+<span class="material-symbols-outlined text-sky-700" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</header>
+<!-- Tool Bar / Header Actions -->
+<section class="px-6 py-4 bg-surface flex items-center justify-between border-b border-outline-variant/15">
+<div class="flex flex-col">
+<h1 class="headline-sm text-on-surface font-semibold flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">analytics</span>
+                    Gestão de Biometria &amp; Ciclo
+                </h1>
+<p class="text-xs text-on-surface-variant">Monitoramento técnico de crescimento e conversão alimentar em tempo real.</p>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex bg-surface-container-low p-1 rounded-lg ghost-border">
+<button class="px-3 py-1.5 text-xs font-medium bg-surface-container-lowest shadow-sm rounded-md text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">table_rows</span>
+                        Visualização Grid
+                    </button>
+<button class="px-3 py-1.5 text-xs font-medium text-on-surface-variant hover:bg-surface-container rounded-md flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">show_chart</span>
+                        Tendências
+                    </button>
+</div>
+<div class="h-8 w-[1px] bg-outline-variant/30 mx-1"></div>
+<button class="flex items-center gap-2 px-3 py-1.5 rounded-md bg-secondary-container text-on-secondary-container text-xs font-semibold hover:bg-secondary-fixed transition-colors">
+<span class="material-symbols-outlined text-sm">file_download</span>
+                    Exportar CSV
+                </button>
+<button class="flex items-center gap-2 px-3 py-1.5 rounded-md bg-secondary-container text-on-secondary-container text-xs font-semibold hover:bg-secondary-fixed transition-colors" onclick="document.getElementById('import-modal').classList.remove('hidden')">
+<span class="material-symbols-outlined text-sm">file_upload</span>
+                    Importar Excel
+                </button>
+<button class="flex items-center gap-2 px-4 py-2 rounded-md bg-gradient-to-br from-primary to-primary-container text-white text-sm font-bold shadow-lg hover:shadow-primary/20 transition-all active:scale-95" onclick="document.getElementById('import-modal').classList.remove('hidden')">
+<span class="material-symbols-outlined text-sm">add</span>
+                    Nova Biometria
+                </button>
+</div>
+</section>
+<!-- Main Content: Airtable Style Grid -->
+<section class="flex-1 overflow-auto bg-surface p-0">
+<div class="min-w-max">
+<table class="w-full border-collapse text-left bg-surface-container-lowest">
+<thead class="sticky top-0 z-10">
+<tr class="bg-surface-container-low">
+<th class="label-sm px-4 py-3 text-on-surface-variant font-bold border-r border-outline-variant/15 whitespace-nowrap">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-xs">label</span> Viveiro
+                                </div>
+</th>
+<th class="label-sm px-4 py-3 text-on-surface-variant font-bold border-r border-outline-variant/15 whitespace-nowrap">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-xs">calendar_today</span> Semana
+                                </div>
+</th>
+<th class="label-sm px-4 py-3 text-on-surface-variant font-bold border-r border-outline-variant/15 whitespace-nowrap">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-xs">weight</span> Peso Atual (g)
+                                </div>
+</th>
+<th class="label-sm px-4 py-3 text-on-surface-variant font-bold border-r border-outline-variant/15 whitespace-nowrap">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-xs">trending_up</span> GP Semanal
+                                </div>
+</th>
+<th class="label-sm px-4 py-3 text-on-surface-variant font-bold border-r border-outline-variant/15 whitespace-nowrap">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-xs">favorite</span> Sobrevivência %
+                                </div>
+</th>
+<th class="label-sm px-4 py-3 text-on-surface-variant font-bold border-r border-outline-variant/15 whitespace-nowrap">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-xs">restaurant</span> FCA
+                                </div>
+</th>
+<th class="label-sm px-4 py-3 text-on-surface-variant font-bold border-r border-outline-variant/15 whitespace-nowrap">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-xs">event_upcoming</span> Previsão Despesca
+                                </div>
+</th>
+<th class="label-sm px-4 py-3 text-on-surface-variant font-bold border-r border-outline-variant/15 whitespace-nowrap">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-xs">groups</span> Camarões/ha
+                                </div>
+</th>
+<th class="label-sm px-4 py-3 text-on-surface-variant font-bold border-r border-outline-variant/15 whitespace-nowrap">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-xs">inventory</span> Total (kg/ha)
+                                </div>
+</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/10">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-highest transition-colors group cursor-text">
+<td class="px-4 py-2 border-r border-outline-variant/5">
+<span class="px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed text-[11px] font-bold">V-001</span>
+</td>
+<td class="px-4 py-2 border-r border-outline-variant/5 text-[13px]">Semana 12</td>
+<td class="px-4 py-2 border-r border-outline-variant/5 text-[13px] font-medium text-on-surface">14.25 g</td>
+<td class="px-4 py-2 border-r border-outline-variant/5 text-[13px] text-primary">1.85 g/sem</td>
+<td class="px-4 py-2 border-r border-outline-variant/5 text-[13px]">
+<div class="flex items-center gap-2">
+<div class="w-12 bg-surface-container-high h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full" style="width: 88%"></div>
+</div>
+<span class="font-semibold">88%</span>
+</div>
+</td>
+<td class="px-4 py-2 border-r border-outline-variant/5 text-[13px] font-mono">1.24</td>
+<td class="px-4 py-2 border-r border-outline-variant/5 text-[13px] text-on-surface-variant">22.00 g</td>
+<td class="px-4 py-2 border-r border-outline-variant/5 text-[13px]">120.000</td>
+<td class="px-4 py-2 border-r border-outline-variant/5 text-[13px] font-bold">1.710 kg</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-highest transition-colors group cursor-text">
+<td class="px-4 py-2 border-r border-outline-variant/5">
+<span class="px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed text-[11px] font-bold">V-002</span>
+</td>
+<td class="px-4 py-2 border-r border-outline-variant/5 text-[13px]">Semana 11</td>
+<td class="px-4 py-2 border-r border-outline-variant/5 text-[13px] font-medium text-on-surface">12.10 g</td>
+<td class="px-4 py-2 border-r border-outline-variant/5 text-[13px] text-primary">1.60 g/sem</td>
+<td class="px-4 py-2 border-r border-outline-variant/5 text-[13px]">
+<div class="flex items-center gap-2">
+<div class="w-12 bg-surface-container-high h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full" style="width: 92%"></div>
+</div>
+<span class="font-semibold">92%</span>
+</div>
+</td>
+<td class="px-4 py-2 border-r border-outline-variant/5 text-[13px] font-mono">1.18</td>
+<td class="px-4 py-2 border-r border-outline-variant/5 text-[13px] text-on-surface-variant">20.50 g</td>
+<td class="px-4 py-2 border-r border-outline-variant/5 text-[13px]">115.000</td>
+<td class="px-4 py-2 border-r border-outline-variant/5 text-[13px] font-bold">1.391 kg</td>
+</tr>
+<!-- Row 3 Alert -->
+<tr class="hover:bg-tertiary-fixed/30 transition-colors group cursor-text bg-tertiary-fixed/10">
+<td class="px-4 py-2 border-r border-outline-variant/5">
+<span class="px-2 py-0.5 rounded-full bg-tertiary-container text-on-tertiary-container text-[11px] font-bold">V-003</span>
+</td>
+<td class="px-4 py-2 border-r border-outline-variant/5 text-[13px]">Semana 14</td>
+<td class="px-4 py-2 border-r border-outline-variant/5 text-[13px] font-medium text-on-surface">18.40 g</td>
+<td class="px-4 py-2 border-r border-outline-variant/5 text-[13px] text-tertiary">0.95 g/sem</td>
+<td class="px-4 py-2 border-r border-outline-variant/5 text-[13px]">
+<div class="flex items-center gap-2">
+<div class="w-12 bg-surface-container-high h-1.5 rounded-full overflow-hidden">
+<div class="bg-tertiary h-full" style="width: 76%"></div>
+</div>
+<span class="font-semibold text-tertiary">76%</span>
+</div>
+</td>
+<td class="px-4 py-2 border-r border-outline-variant/5 text-[13px] font-mono text-tertiary">1.45</td>
+<td class="px-4 py-2 border-r border-outline-variant/5 text-[13px] text-on-surface-variant">25.00 g</td>
+<td class="px-4 py-2 border-r border-outline-variant/5 text-[13px]">98.000</td>
+<td class="px-4 py-2 border-r border-outline-variant/5 text-[13px] font-bold">1.803 kg</td>
+</tr>
+<!-- More Rows -->
+<tr class="hover:bg-surface-container-highest transition-colors group cursor-text">
+<td class="px-4 py-2 border-r border-outline-variant/5">
+<span class="px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed text-[11px] font-bold">V-004</span>
+</td>
+<td class="px-4 py-2 border-r border-outline-variant/5 text-[13px]">Semana 10</td>
+<td class="px-4 py-2 border-r border-outline-variant/5 text-[13px] font-medium text-on-surface">8.90 g</td>
+<td class="px-4 py-2 border-r border-outline-variant/5 text-[13px] text-primary">1.40 g/sem</td>
+<td class="px-4 py-2 border-r border-outline-variant/5 text-[13px]">
+<div class="flex items-center gap-2">
+<div class="w-12 bg-surface-container-high h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full" style="width: 95%"></div>
+</div>
+<span class="font-semibold">95%</span>
+</div>
+</td>
+<td class="px-4 py-2 border-r border-outline-variant/5 text-[13px] font-mono">1.10</td>
+<td class="px-4 py-2 border-r border-outline-variant/5 text-[13px] text-on-surface-variant">18.00 g</td>
+<td class="px-4 py-2 border-r border-outline-variant/5 text-[13px]">140.000</td>
+<td class="px-4 py-2 border-r border-outline-variant/5 text-[13px] font-bold">1.246 kg</td>
+</tr>
+<!-- Duplicate row for density effect -->
+<tr class="hover:bg-surface-container-highest transition-colors group cursor-text">
+<td class="px-4 py-2 border-r border-outline-variant/5">
+<span class="px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed text-[11px] font-bold">V-005</span>
+</td>
+<td class="px-4 py-2 border-r border-outline-variant/5 text-[13px]">Semana 12</td>
+<td class="px-4 py-2 border-r border-outline-variant/5 text-[13px] font-medium text-on-surface">15.10 g</td>
+<td class="px-4 py-2 border-r border-outline-variant/5 text-[13px] text-primary">1.90 g/sem</td>
+<td class="px-4 py-2 border-r border-outline-variant/5 text-[13px]">
+<div class="flex items-center gap-2">
+<div class="w-12 bg-surface-container-high h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full" style="width: 90%"></div>
+</div>
+<span class="font-semibold">90%</span>
+</div>
+</td>
+<td class="px-4 py-2 border-r border-outline-variant/5 text-[13px] font-mono">1.22</td>
+<td class="px-4 py-2 border-r border-outline-variant/5 text-[13px] text-on-surface-variant">22.00 g</td>
+<td class="px-4 py-2 border-r border-outline-variant/5 text-[13px]">125.000</td>
+<td class="px-4 py-2 border-r border-outline-variant/5 text-[13px] font-bold">1.887 kg</td>
+</tr>
+<!-- Empty rows for "Excel" feel -->
+<tr class="h-8">
+<td class="border-r border-outline-variant/5"></td><td class="border-r border-outline-variant/5"></td><td class="border-r border-outline-variant/5"></td><td class="border-r border-outline-variant/5"></td><td class="border-r border-outline-variant/5"></td><td class="border-r border-outline-variant/5"></td><td class="border-r border-outline-variant/5"></td><td class="border-r border-outline-variant/5"></td><td class="border-r border-outline-variant/5"></td>
+</tr>
+<tr class="h-8">
+<td class="border-r border-outline-variant/5"></td><td class="border-r border-outline-variant/5"></td><td class="border-r border-outline-variant/5"></td><td class="border-r border-outline-variant/5"></td><td class="border-r border-outline-variant/5"></td><td class="border-r border-outline-variant/5"></td><td class="border-r border-outline-variant/5"></td><td class="border-r border-outline-variant/5"></td><td class="border-r border-outline-variant/5"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- Status Bar -->
+<footer class="bg-surface-container-low px-6 py-2 border-t border-outline-variant/15 flex items-center justify-between text-[11px] text-on-surface-variant font-medium">
+<div class="flex items-center gap-4">
+<span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-emerald-500"></span> Sistema Online</span>
+<span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[14px]">update</span> Último Sync: 12:45:02</span>
+<span>Viveiros Ativos: 42</span>
+</div>
+<div class="flex items-center gap-4">
+<span>Visualizando 1-15 de 42</span>
+<div class="flex items-center gap-1">
+<button class="p-1 hover:bg-surface-container rounded transition-colors"><span class="material-symbols-outlined text-sm">chevron_left</span></button>
+<button class="p-1 hover:bg-surface-container rounded transition-colors"><span class="material-symbols-outlined text-sm">chevron_right</span></button>
+</div>
+</div>
+</footer>
+</main>
+<!-- Import Modal Simulation -->
+<div class="fixed inset-0 z-[60] flex items-center justify-center bg-black/40 backdrop-blur-sm hidden" id="import-modal">
+<div class="bg-white dark:bg-slate-900 w-[600px] max-w-[90vw] rounded-2xl shadow-2xl overflow-hidden flex flex-col">
+<!-- Modal Header -->
+<div class="px-6 py-4 border-b border-outline-variant/15 flex items-center justify-between">
+<h2 class="text-lg font-bold text-sky-900 dark:text-sky-100 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">upload_file</span>
+                Importar Dados de Biometria
+            </h2>
+<button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200" onclick="document.getElementById('import-modal').classList.add('hidden'); resetModal()">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<!-- Step 1: Upload -->
+<div class="p-8" id="step-upload">
+<div class="border-2 border-dashed border-primary/30 rounded-xl bg-primary/5 p-12 text-center flex flex-col items-center gap-4 cursor-pointer hover:bg-primary/10 hover:border-primary transition-all group" onclick="startProcessing()">
+<div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">add_box</span>
+</div>
+<div class="flex flex-col gap-1">
+<p class="font-bold text-sky-900 dark:text-sky-100">Arraste seu arquivo CSV ou XLSX aqui</p>
+<p class="text-xs text-on-surface-variant">ou clique para selecionar do seu computador</p>
+</div>
+<div class="flex gap-2 mt-2">
+<span class="text-[10px] font-bold px-2 py-1 rounded bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-400 uppercase">.csv</span>
+<span class="text-[10px] font-bold px-2 py-1 rounded bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-400 uppercase">.xlsx</span>
+</div>
+</div>
+</div>
+<!-- Step 2: Processing -->
+<div class="p-12 text-center hidden flex flex-col items-center gap-6" id="step-processing">
+<div class="w-full max-w-xs space-y-4">
+<p class="text-sm font-semibold text-sky-900 dark:text-sky-100">Processando e Validando Arquivo...</p>
+<div class="w-full bg-slate-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full animate-progress"></div>
+</div>
+<p class="text-[10px] text-on-surface-variant italic">Mapeando colunas: Viveiro, Peso (g), Sobrevivência...</p>
+</div>
+</div>
+<!-- Step 3: Preview -->
+<div class="hidden flex flex-col flex-1" id="step-preview">
+<div class="p-4 bg-emerald-50 dark:bg-emerald-950/20 text-emerald-700 dark:text-emerald-400 text-xs font-medium flex items-center gap-2 border-b border-emerald-100 dark:border-emerald-900/30">
+<span class="material-symbols-outlined text-sm">check_circle</span>
+                3 registros validados com sucesso. Verifique o preview abaixo:
+            </div>
+<div class="max-h-[300px] overflow-auto">
+<table class="w-full border-collapse text-left text-xs">
+<thead class="sticky top-0 bg-slate-100 dark:bg-slate-800">
+<tr>
+<th class="px-4 py-3 border-r border-outline-variant/15 font-bold">Viveiro</th>
+<th class="px-4 py-3 border-r border-outline-variant/15 font-bold">Peso Atual (g)</th>
+<th class="px-4 py-3 border-r border-outline-variant/15 font-bold">Sobrevivência %</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/10">
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50">
+<td class="px-4 py-2 border-r border-outline-variant/5"><span class="px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed font-bold text-[10px]">V-008</span></td>
+<td class="px-4 py-2 border-r border-outline-variant/5">12.50</td>
+<td class="px-4 py-2 border-r border-outline-variant/5">94%</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50">
+<td class="px-4 py-2 border-r border-outline-variant/5"><span class="px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed font-bold text-[10px]">V-009</span></td>
+<td class="px-4 py-2 border-r border-outline-variant/5">11.85</td>
+<td class="px-4 py-2 border-r border-outline-variant/5">91%</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50">
+<td class="px-4 py-2 border-r border-outline-variant/5"><span class="px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed font-bold text-[10px]">V-010</span></td>
+<td class="px-4 py-2 border-r border-outline-variant/5">13.20</td>
+<td class="px-4 py-2 border-r border-outline-variant/5">89%</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-6 bg-slate-50 dark:bg-slate-900/50 border-t border-outline-variant/15 flex justify-end gap-3 mt-auto">
+<button class="px-4 py-2 text-xs font-semibold text-on-surface-variant hover:bg-slate-200 dark:hover:bg-slate-800 rounded-lg transition-colors" onclick="resetModal()">Cancelar</button>
+<button class="px-6 py-2 text-xs font-bold text-white bg-primary rounded-lg shadow-lg shadow-primary/20 hover:bg-primary-dark transition-all active:scale-95" onclick="document.getElementById('import-modal').classList.add('hidden'); resetModal()">Confirmar Importação</button>
+</div>
+</div>
+</div>
+</div>
+<script>
+    function startProcessing() {
+        document.getElementById('step-upload').classList.add('hidden');
+        document.getElementById('step-processing').classList.remove('hidden');
+        
+        // Simulate delay for processing
+        setTimeout(() => {
+            document.getElementById('step-processing').classList.add('hidden');
+            document.getElementById('step-preview').classList.remove('hidden');
+        }, 2100);
+    }
+
+    function resetModal() {
+        document.getElementById('step-upload').classList.remove('hidden');
+        document.getElementById('step-processing').classList.add('hidden');
+        document.getElementById('step-preview').classList.add('hidden');
+    }
+</script>
+<!-- Floating AI Assistant -->
+<div class="bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl font-inter text-sm font-semibold fixed bottom-4 right-4 rounded-xl p-4 flex items-center gap-2 shadow-[0_12px_32px_-4px_rgba(0,30,47,0.12)] z-[100] cursor-pointer hover:scale-105 hover:bg-white/90 transition-transform group">
+<div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white shadow-lg shadow-primary/30 group-hover:rotate-12 transition-transform">
+<span class="material-symbols-outlined" data-icon="auto_awesome" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+<div class="flex flex-col">
+<span class="text-sky-600 leading-none">Cam AI Copilot</span>
+<span class="text-[10px] text-on-surface-variant font-normal">Analise do V-003 recomendada</span>
+</div>
+</div>
+</body></html>

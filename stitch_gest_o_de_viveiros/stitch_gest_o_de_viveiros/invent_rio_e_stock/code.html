@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cam AI - Inventário e Stock</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-fixed": "#ffdcbd",
+              "on-error": "#ffffff",
+              "surface-variant": "#e1e3e4",
+              "on-tertiary": "#ffffff",
+              "on-surface-variant": "#3e4850",
+              "outline-variant": "#bec8d2",
+              "on-primary-container": "#003751",
+              "surface": "#f8f9fa",
+              "surface-container": "#edeeef",
+              "surface-dim": "#d9dadb",
+              "on-surface": "#191c1d",
+              "secondary-fixed": "#c9e6ff",
+              "error": "#ba1a1a",
+              "on-secondary": "#ffffff",
+              "inverse-primary": "#89ceff",
+              "tertiary-fixed-dim": "#ffb86e",
+              "on-primary-fixed": "#001e2f",
+              "on-background": "#191c1d",
+              "on-tertiary-fixed-variant": "#693c00",
+              "on-secondary-container": "#3d637d",
+              "inverse-on-surface": "#f0f1f2",
+              "primary-fixed": "#c9e6ff",
+              "surface-container-low": "#f3f4f5",
+              "surface-tint": "#006591",
+              "tertiary-container": "#de8712",
+              "secondary": "#3c627d",
+              "on-error-container": "#93000a",
+              "secondary-fixed-dim": "#a5cbe9",
+              "background": "#f8f9fa",
+              "on-secondary-fixed": "#001e2f",
+              "on-secondary-fixed-variant": "#234b64",
+              "tertiary": "#8a5100",
+              "on-tertiary-fixed": "#2c1600",
+              "surface-container-high": "#e7e8e9",
+              "on-tertiary-container": "#4d2b00",
+              "on-primary": "#ffffff",
+              "primary": "#006591",
+              "surface-container-highest": "#e1e3e4",
+              "surface-container-lowest": "#ffffff",
+              "on-primary-fixed-variant": "#004c6e",
+              "inverse-surface": "#2e3132",
+              "secondary-container": "#b8dffe",
+              "outline": "#6e7881",
+              "surface-bright": "#f8f9fa",
+              "primary-fixed-dim": "#89ceff",
+              "error-container": "#ffdad6",
+              "primary-container": "#0ea5e9"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .glass-ai { backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.15); }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body">
+<!-- Sidebar (Shared Component) -->
+<aside class="bg-slate-100 dark:bg-slate-950 h-screen w-20 hover:w-64 transition-all duration-300 fixed left-0 top-0 z-50 overflow-hidden flex flex-col py-6 gap-2 font-inter tracking-tighter text-[13px] font-medium transition-all duration-300 ease-in-out">
+<!-- Brand Header -->
+<div class="px-6 mb-8 flex items-center gap-4">
+<div class="w-8 h-8 rounded-lg bg-primary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-primary-container" style="font-variation-settings: 'FILL' 1;">tsunami</span>
+</div>
+<div class="whitespace-nowrap overflow-hidden">
+<p class="font-black text-sky-800 dark:text-sky-300 text-base">Cam AI</p>
+<p class="text-[10px] text-on-surface-variant leading-none">Precision Aqua</p>
+</div>
+</div>
+<!-- Navigation Tabs -->
+<nav class="flex-1">
+<a class="flex items-center gap-4 px-6 py-3.5 text-slate-500 dark:text-slate-400 hover:text-sky-600 hover:bg-slate-200 dark:hover:bg-slate-800 transition-all" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="whitespace-nowrap">Dashboard</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-3.5 text-slate-500 dark:text-slate-400 hover:text-sky-600 hover:bg-slate-200 dark:hover:bg-slate-800 transition-all" href="#">
+<span class="material-symbols-outlined">tsunami</span>
+<span class="whitespace-nowrap">Viveiros</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-3.5 text-slate-500 dark:text-slate-400 hover:text-sky-600 hover:bg-slate-200 dark:hover:bg-slate-800 transition-all" href="#">
+<span class="material-symbols-outlined">straighten</span>
+<span class="whitespace-nowrap">Biometria</span>
+</a>
+<!-- Active Tab: Inventário -->
+<a class="flex items-center gap-4 px-6 py-3.5 border-l-4 border-sky-600 bg-sky-100/50 dark:bg-sky-900/20 text-sky-800 dark:text-sky-200 transition-all" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">inventory_2</span>
+<span class="whitespace-nowrap font-semibold">Inventário</span>
+</a>
+</nav>
+<!-- Footer Tabs -->
+<div class="mt-auto border-t border-outline-variant/10 pt-4">
+<a class="flex items-center gap-4 px-6 py-3.5 text-slate-500 dark:text-slate-400 hover:text-sky-600 hover:bg-slate-200 dark:hover:bg-slate-800 transition-all" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="whitespace-nowrap">Configurações</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-3.5 text-slate-500 dark:text-slate-400 hover:text-sky-600 hover:bg-slate-200 dark:hover:bg-slate-800 transition-all" href="#">
+<span class="material-symbols-outlined">help_outline</span>
+<span class="whitespace-nowrap">Suporte</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-20 flex flex-col min-h-screen">
+<!-- TopAppBar (Shared Component) -->
+<header class="bg-slate-50/80 dark:bg-slate-900/80 backdrop-blur-md docked full-width top-0 sticky z-40 flex justify-between items-center w-full px-6 py-3 font-inter tracking-tight text-sm font-medium">
+<div class="flex items-center gap-6">
+<span class="text-lg font-bold text-sky-900 dark:text-sky-100 bg-slate-200 dark:bg-slate-800 px-4 py-1.5 rounded-full">Fazenda Águas Claras</span>
+<div class="relative hidden lg:flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-on-surface-variant text-base">search</span>
+<input class="bg-surface-container-low border-none rounded-full pl-10 pr-4 py-1.5 text-sm w-64 focus:ring-1 focus:ring-primary focus:bg-surface-container-lowest transition-all" placeholder="Buscar no inventário..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-500 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 rounded-full transition-colors active:opacity-80">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="h-8 w-8 rounded-full overflow-hidden bg-surface-container-high border border-outline-variant/20">
+<img class="w-full h-full object-cover" data-alt="close-up portrait of a professional farm manager with a confident expression in soft natural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAyY0QxxIMyodNHispWQ5V25mQs0yPKEjDVHACLheGKutSW-sn-uEanTDkyQb2zViBT5qxKGAQzcGb2jGPpX6m9sDcYp3ICUrwuHmXVRtxJ2EG-SPF2fBwR4Wpxd2MAy_6ctH6tOwAizrHMqUODl34BoKgl5r5Gx329-ir4wpOv9j5lOMuGK_kKjfjnJj9LX6qEFZFAo9BxyCIP69edIXUGgzSrxxxD2SJEbRlzTaUURD7BLiGZxHJz4WEq_S4jIkUBSIbcP8HYvdY"/>
+</div>
+</div>
+</header>
+<!-- Content Canvas -->
+<div class="p-8 max-w-[1400px] mx-auto w-full flex-1">
+<!-- Page Header -->
+<div class="flex justify-between items-end mb-8">
+<div>
+<h1 class="text-headline-sm font-semibold text-on-surface">Inventário e Stock</h1>
+<p class="text-body-md text-on-surface-variant mt-1">Gestão de insumos e controle de custos operacionais.</p>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center gap-2 px-4 py-2 bg-secondary-container text-on-secondary-container rounded-md text-sm font-medium hover:brightness-95 transition-all">
+<span class="material-symbols-outlined text-lg">download</span>
+                        Exportar CSV
+                    </button>
+<button class="flex items-center gap-2 px-4 py-2 bg-gradient-to-br from-primary to-primary-container text-on-primary rounded-md text-sm font-semibold hover:opacity-90 transition-all shadow-sm">
+<span class="material-symbols-outlined text-lg">add</span>
+                        Novo Insumo
+                    </button>
+</div>
+</div>
+<!-- Dashboard Stats Row (High density Bento Style) -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+<div class="bg-surface-container-lowest p-5 rounded-xl flex flex-col gap-2">
+<p class="text-label-sm uppercase tracking-wider text-on-surface-variant font-bold">Valor Total em Stock</p>
+<p class="text-2xl font-bold text-on-surface">R$ 142.450,00</p>
+<p class="text-[11px] text-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">trending_up</span> +12% vs mês anterior
+                    </p>
+</div>
+<div class="bg-surface-container-lowest p-5 rounded-xl flex flex-col gap-2">
+<p class="text-label-sm uppercase tracking-wider text-on-surface-variant font-bold">Consumo Médio (Ração)</p>
+<p class="text-2xl font-bold text-on-surface">850 kg/dia</p>
+<p class="text-[11px] text-tertiary flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">warning</span> Projeção: +5 dias stock
+                    </p>
+</div>
+<div class="bg-surface-container-lowest p-5 rounded-xl flex flex-col gap-2">
+<p class="text-label-sm uppercase tracking-wider text-on-surface-variant font-bold">Alertas Críticos</p>
+<p class="text-2xl font-bold text-error">03 Itens</p>
+<p class="text-[11px] text-on-surface-variant">Abaixo do nível de segurança</p>
+</div>
+<div class="bg-surface-container-lowest p-5 rounded-xl flex flex-col gap-2">
+<p class="text-label-sm uppercase tracking-wider text-on-surface-variant font-bold">Última Entrada</p>
+<p class="text-2xl font-bold text-on-surface">Ração Crescimento</p>
+<p class="text-[11px] text-on-surface-variant">Há 14 horas</p>
+</div>
+</div>
+<!-- Main Inventory Table Container -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm">
+<!-- Table Controls -->
+<div class="px-6 py-4 flex items-center justify-between bg-surface-container-low/50 border-b border-outline-variant/10">
+<div class="flex gap-4 items-center">
+<span class="text-label-sm font-bold text-on-surface-variant uppercase tracking-widest">Insumos Ativos</span>
+<div class="flex bg-surface-container rounded-lg p-0.5">
+<button class="px-3 py-1 text-[11px] font-bold bg-white rounded shadow-sm text-primary uppercase tracking-tight">Todos</button>
+<button class="px-3 py-1 text-[11px] font-bold text-on-surface-variant hover:text-on-surface uppercase tracking-tight">Ração</button>
+<button class="px-3 py-1 text-[11px] font-bold text-on-surface-variant hover:text-on-surface uppercase tracking-tight">Químicos</button>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-label-sm text-on-surface-variant">Filtrar por Status:</span>
+<select class="bg-transparent border-none text-[12px] font-medium focus:ring-0 cursor-pointer">
+<option>Todos</option>
+<option>Crítico</option>
+<option>Estável</option>
+</select>
+</div>
+</div>
+<!-- Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low/30 border-b border-outline-variant/10">
+<th class="px-6 py-3 text-label-sm font-bold text-on-surface-variant uppercase tracking-wider">Descrição do Insumo</th>
+<th class="px-6 py-3 text-label-sm font-bold text-on-surface-variant uppercase tracking-wider">Categoria</th>
+<th class="px-6 py-3 text-label-sm font-bold text-on-surface-variant uppercase tracking-wider">Qtd Atual</th>
+<th class="px-6 py-3 text-label-sm font-bold text-on-surface-variant uppercase tracking-wider">Custo (R$/kg)</th>
+<th class="px-6 py-3 text-label-sm font-bold text-on-surface-variant uppercase tracking-wider">Total em Stock</th>
+<th class="px-6 py-3 text-label-sm font-bold text-on-surface-variant uppercase tracking-wider">Status</th>
+<th class="px-6 py-3"></th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/5">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-highest transition-colors group">
+<td class="px-6 py-3.5">
+<div class="flex flex-col">
+<span class="text-[13px] font-semibold text-on-surface">Ração Total - Fase Crescimento</span>
+<span class="text-[11px] text-on-surface-variant">Lote: 2245-A | Validade: 12/2024</span>
+</div>
+</td>
+<td class="px-6 py-3.5">
+<span class="text-[13px] text-on-surface-variant">Nutrição</span>
+</td>
+<td class="px-6 py-3.5 font-medium text-[13px]">
+<span class="text-error font-bold">1.250 kg</span>
+<div class="w-24 h-1 bg-surface-container rounded-full mt-1 overflow-hidden">
+<div class="bg-error w-1/5 h-full"></div>
+</div>
+</td>
+<td class="px-6 py-3.5 text-[13px]">R$ 4,85</td>
+<td class="px-6 py-3.5 font-medium text-[13px]">R$ 6.062,50</td>
+<td class="px-6 py-3.5">
+<span class="px-2 py-0.5 rounded-full bg-error-container text-on-error-container text-[10px] font-bold uppercase tracking-tighter">Stock Crítico</span>
+</td>
+<td class="px-6 py-3.5 text-right">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors text-lg">more_vert</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-highest transition-colors group">
+<td class="px-6 py-3.5">
+<div class="flex flex-col">
+<span class="text-[13px] font-semibold text-on-surface">Probiótico AquaCare Ultra</span>
+<span class="text-[11px] text-on-surface-variant">Concentrado 500g | Importado</span>
+</div>
+</td>
+<td class="px-6 py-3.5">
+<span class="text-[13px] text-on-surface-variant">Insumos</span>
+</td>
+<td class="px-6 py-3.5 font-medium text-[13px]">
+<span>45 units</span>
+<div class="w-24 h-1 bg-surface-container rounded-full mt-1 overflow-hidden">
+<div class="bg-primary w-4/5 h-full"></div>
+</div>
+</td>
+<td class="px-6 py-3.5 text-[13px]">R$ 185,00</td>
+<td class="px-6 py-3.5 font-medium text-[13px]">R$ 8.325,00</td>
+<td class="px-6 py-3.5">
+<span class="px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container text-[10px] font-bold uppercase tracking-tighter">Otimizado</span>
+</td>
+<td class="px-6 py-3.5 text-right">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors text-lg">more_vert</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-highest transition-colors group">
+<td class="px-6 py-3.5">
+<div class="flex flex-col">
+<span class="text-[13px] font-semibold text-on-surface">Calcário Agrícola Fino</span>
+<span class="text-[11px] text-on-surface-variant">Sacos 50kg | Correção de Solo</span>
+</div>
+</td>
+<td class="px-6 py-3.5">
+<span class="text-[13px] text-on-surface-variant">Insumos</span>
+</td>
+<td class="px-6 py-3.5 font-medium text-[13px]">
+<span>15.000 kg</span>
+<div class="w-24 h-1 bg-surface-container rounded-full mt-1 overflow-hidden">
+<div class="bg-tertiary-container w-1/2 h-full"></div>
+</div>
+</td>
+<td class="px-6 py-3.5 text-[13px]">R$ 0,75</td>
+<td class="px-6 py-3.5 font-medium text-[13px]">R$ 11.250,00</td>
+<td class="px-6 py-3.5">
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant text-[10px] font-bold uppercase tracking-tighter">Estável</span>
+</td>
+<td class="px-6 py-3.5 text-right">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors text-lg">more_vert</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-highest transition-colors group">
+<td class="px-6 py-3.5">
+<div class="flex flex-col">
+<span class="text-[13px] font-semibold text-on-surface">Vitamina C Estabilizada</span>
+<span class="text-[11px] text-on-surface-variant">Aditivo de Ração | Fortificante</span>
+</div>
+</td>
+<td class="px-6 py-3.5">
+<span class="text-[13px] text-on-surface-variant">Aditivos</span>
+</td>
+<td class="px-6 py-3.5 font-medium text-[13px]">
+<span class="text-error font-bold">5 kg</span>
+<div class="w-24 h-1 bg-surface-container rounded-full mt-1 overflow-hidden">
+<div class="bg-error w-[5%] h-full"></div>
+</div>
+</td>
+<td class="px-6 py-3.5 text-[13px]">R$ 42,00</td>
+<td class="px-6 py-3.5 font-medium text-[13px]">R$ 210,00</td>
+<td class="px-6 py-3.5">
+<span class="px-2 py-0.5 rounded-full bg-error-container text-on-error-container text-[10px] font-bold uppercase tracking-tighter">Esgotando</span>
+</td>
+<td class="px-6 py-3.5 text-right">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors text-lg">more_vert</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="px-6 py-4 flex items-center justify-between border-t border-outline-variant/10">
+<span class="text-xs text-on-surface-variant">Exibindo 1-10 de 48 insumos cadastrados</span>
+<div class="flex gap-1">
+<button class="w-8 h-8 flex items-center justify-center rounded hover:bg-surface-container text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined text-lg">chevron_left</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center rounded bg-primary text-on-primary text-xs font-bold">1</button>
+<button class="w-8 h-8 flex items-center justify-center rounded hover:bg-surface-container text-on-surface-variant text-xs font-bold">2</button>
+<button class="w-8 h-8 flex items-center justify-center rounded hover:bg-surface-container text-on-surface-variant text-xs font-bold">3</button>
+<button class="w-8 h-8 flex items-center justify-center rounded hover:bg-surface-container text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined text-lg">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Operational Insights (Asymmetric Card Layout) -->
+<div class="mt-8 grid grid-cols-1 lg:grid-cols-3 gap-6">
+<div class="lg:col-span-2 bg-surface-container-lowest p-6 rounded-xl relative overflow-hidden">
+<div class="relative z-10">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-primary">auto_awesome</span>
+<h3 class="font-bold text-sm uppercase tracking-wide">Previsão Inteligente de Reposição</h3>
+</div>
+<div class="flex flex-col md:flex-row gap-8 items-center">
+<div class="flex-1">
+<p class="text-sm text-on-surface-variant leading-relaxed">Com base no consumo atual de <span class="font-bold text-on-surface">850 kg/dia</span> e na taxa de crescimento da biomassa no Viveiro 07, recomendamos realizar o pedido de <span class="font-bold text-primary">15 toneladas</span> de Ração Crescimento até o dia <span class="font-bold">22/10</span> para evitar ruptura.</p>
+<button class="mt-4 px-4 py-2 bg-primary/10 text-primary rounded text-[11px] font-bold uppercase tracking-wider hover:bg-primary/20 transition-all">Gerar Pré-Pedido de Compra</button>
+</div>
+<div class="w-full md:w-48 h-24 bg-surface-container rounded-lg flex items-center justify-center border border-outline-variant/10">
+<div class="text-center">
+<p class="text-[10px] uppercase font-bold text-on-surface-variant">Nível de Confiança</p>
+<p class="text-2xl font-black text-primary">94.8%</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Decorative Gradient -->
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-3xl -mr-16 -mt-16"></div>
+</div>
+<div class="bg-tertiary-container/10 p-6 rounded-xl border border-tertiary-container/20">
+<h3 class="font-bold text-sm uppercase tracking-wide text-on-tertiary-container flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined">lightbulb</span> Alerta de Custo
+                    </h3>
+<p class="text-sm text-on-tertiary-container leading-relaxed mb-4">O preço do Probiótico Ultra subiu <span class="font-bold">18%</span> no último fornecedor cadastrado. Sugerimos verificar a cotação com a <span class="underline decoration-dotted">AquaDistribuidores Ltda</span>.</p>
+<a class="text-xs font-bold text-tertiary flex items-center gap-1 group" href="#">
+                        Verificar fornecedores alternativos 
+                        <span class="material-symbols-outlined text-sm transition-transform group-hover:translate-x-1">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating AI Button (Shared Component) -->
+<div class="fixed bottom-4 right-4 rounded-xl p-4 flex items-center gap-2 bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl text-sky-600 dark:text-sky-400 font-inter text-sm font-semibold shadow-[0_12px_32px_-4px_rgba(0,30,47,0.12)] z-[100] cursor-pointer hover:scale-105 hover:bg-white/90 dark:hover:bg-slate-800/90 transition-transform slide-up-fade-in group border border-white/20">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span>Cam AI Copilot</span>
+<div class="absolute -top-1 -right-1 w-3 h-3 bg-error rounded-full border-2 border-white"></div>
+</div>
+</body></html>

@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cam AI - Movimentações de Estoque</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .glass-ai { backdrop-filter: blur(12px); background: rgba(255, 255, 255, 0.7); }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .compact-grid-text { font-size: 13px; line-height: 1.2; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-surface-variant": "#3e4850",
+                        "on-primary-fixed": "#001e2f",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed-dim": "#a5cbe9",
+                        "on-background": "#191c1d",
+                        "on-secondary-container": "#3d637d",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-on-surface": "#f0f1f2",
+                        "primary": "#006591",
+                        "surface-container-highest": "#e1e3e4",
+                        "surface-dim": "#d9dadb",
+                        "primary-fixed": "#c9e6ff",
+                        "on-secondary-fixed": "#001e2f",
+                        "error-container": "#ffdad6",
+                        "secondary-container": "#b8dffe",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed-dim": "#89ceff",
+                        "surface-container-high": "#e7e8e9",
+                        "inverse-surface": "#2e3132",
+                        "inverse-primary": "#89ceff",
+                        "tertiary-container": "#de8712",
+                        "on-tertiary-fixed-variant": "#693c00",
+                        "surface-bright": "#f8f9fa",
+                        "secondary": "#3c627d",
+                        "secondary-fixed": "#c9e6ff",
+                        "on-secondary-fixed-variant": "#234b64",
+                        "background": "#f8f9fa",
+                        "on-primary-fixed-variant": "#004c6e",
+                        "outline": "#6e7881",
+                        "on-tertiary-container": "#4d2b00",
+                        "outline-variant": "#bec8d2",
+                        "surface": "#f8f9fa",
+                        "tertiary-fixed": "#ffdcbd",
+                        "primary-container": "#0ea5e9",
+                        "tertiary": "#8a5100",
+                        "on-tertiary": "#ffffff",
+                        "surface-container": "#edeeef",
+                        "on-tertiary-fixed": "#2c1600",
+                        "tertiary-fixed-dim": "#ffb86e",
+                        "surface-container-low": "#f3f4f5",
+                        "surface-variant": "#e1e3e4",
+                        "on-error": "#ffffff",
+                        "on-surface": "#191c1d",
+                        "surface-tint": "#006591",
+                        "on-primary-container": "#003751",
+                        "error": "#ba1a1a",
+                        "on-primary": "#ffffff"
+                    },
+                    fontFamily: {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-background flex h-screen overflow-hidden">
+<!-- SideNavBar (Authority: JSON) -->
+<aside class="fixed left-0 top-0 h-full z-40 w-64 bg-slate-50 dark:bg-slate-900 flex flex-col font-inter tracking-tight text-sm font-medium">
+<div class="p-6 flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-white">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">waves</span>
+</div>
+<div>
+<h1 class="text-xl font-bold text-sky-900 dark:text-sky-100">Cam AI</h1>
+<p class="text-[10px] text-slate-500 uppercase tracking-widest">Precision Farming</p>
+</div>
+</div>
+<nav class="flex-1 mt-4 px-3 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="waves">waves</span>
+<span>Viveiros</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="straighten">straighten</span>
+<span>Biometria</span>
+</a>
+<!-- Active Tab: Inventário -->
+<a class="flex items-center gap-3 px-4 py-3 border-l-4 border-sky-600 bg-sky-50 dark:bg-sky-900/30 text-sky-700 dark:text-sky-300 transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2" style="font-variation-settings: 'FILL' 1;">inventory_2</span>
+<span>Inventário</span>
+</a>
+</nav>
+<div class="p-4 border-t border-slate-200 dark:border-slate-800 space-y-1">
+<a class="flex items-center gap-3 px-4 py-2 text-slate-500 hover:bg-slate-100 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span>Configurações</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-slate-500 hover:bg-slate-100 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+<span>Suporte</span>
+</a>
+</div>
+</aside>
+<main class="flex-1 ml-64 flex flex-col h-full overflow-hidden">
+<!-- TopNavBar (Authority: JSON) -->
+<header class="w-full h-16 sticky top-0 bg-slate-50/80 dark:bg-slate-900/80 backdrop-blur-md flex items-center justify-between px-6 z-30 font-inter text-sm tracking-tighter">
+<div class="flex items-center gap-8">
+<span class="hidden md:block text-lg font-bold text-slate-800 dark:text-slate-100">Cam AI</span>
+<nav class="flex gap-6">
+<a class="text-slate-600 dark:text-slate-400 hover:text-sky-500 transition-all" href="#">Visão Geral</a>
+<a class="text-sky-600 font-semibold border-b-2 border-sky-600" href="#">Relatórios</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center bg-surface-container-high rounded-full px-4 py-1.5 text-on-surface-variant gap-2 transition-all focus-within:ring-2 focus-within:ring-sky-500/20">
+<span class="material-symbols-outlined text-sm">location_on</span>
+<span class="font-medium">Fazenda Santa Maria</span>
+<span class="material-symbols-outlined text-sm">expand_more</span>
+</div>
+<button class="p-2 text-slate-600 hover:text-sky-500 transition-all">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<div class="flex items-center gap-2 pl-4 border-l border-slate-200 dark:border-slate-800">
+<span class="material-symbols-outlined text-3xl" data-icon="account_circle">account_circle</span>
+</div>
+</div>
+</header>
+<!-- Content Canvas -->
+<section class="flex-1 p-6 overflow-y-auto space-y-6">
+<!-- Summary Header -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-surface-container-lowest p-5 rounded-xl transition-all hover:bg-white border-l-4 border-primary">
+<p class="text-on-surface-variant text-xs font-bold uppercase tracking-widest mb-1">Total Entradas (Hoje)</p>
+<div class="flex items-baseline gap-2">
+<h2 class="text-3xl font-bold tracking-tight text-on-surface">1,240 <span class="text-sm font-medium text-on-surface-variant">kg</span></h2>
+<span class="text-emerald-600 text-xs font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">trending_up</span> +12%
+                        </span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-5 rounded-xl transition-all hover:bg-white border-l-4 border-error">
+<p class="text-on-surface-variant text-xs font-bold uppercase tracking-widest mb-1">Total Saídas (Hoje)</p>
+<div class="flex items-baseline gap-2">
+<h2 class="text-3xl font-bold tracking-tight text-on-surface">850 <span class="text-sm font-medium text-on-surface-variant">kg</span></h2>
+<span class="text-on-surface-variant text-xs font-medium">Estável</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-5 rounded-xl transition-all hover:bg-white border-l-4 border-tertiary">
+<p class="text-on-surface-variant text-xs font-bold uppercase tracking-widest mb-1">Saldo Líquido</p>
+<div class="flex items-baseline gap-2">
+<h2 class="text-3xl font-bold tracking-tight text-on-surface">+390 <span class="text-sm font-medium text-on-surface-variant">kg</span></h2>
+<span class="text-sky-600 text-xs font-bold">Fluxo Positivo</span>
+</div>
+</div>
+</div>
+<!-- Operational Controls -->
+<div class="flex flex-col md:flex-row gap-4 items-end justify-between bg-surface-container-low p-4 rounded-xl">
+<div class="flex flex-wrap gap-4 flex-1">
+<div class="flex flex-col gap-1">
+<label class="text-[11px] font-bold text-on-surface-variant uppercase tracking-wider ml-1">Período</label>
+<select class="bg-surface-container-lowest border-none rounded-lg text-xs font-medium focus:ring-2 focus:ring-primary/20 pr-10 h-10 min-w-[140px]">
+<option>Últimos 7 dias</option>
+<option>Hoje</option>
+<option>Este Mês</option>
+</select>
+</div>
+<div class="flex flex-col gap-1">
+<label class="text-[11px] font-bold text-on-surface-variant uppercase tracking-wider ml-1">Tipo</label>
+<select class="bg-surface-container-lowest border-none rounded-lg text-xs font-medium focus:ring-2 focus:ring-primary/20 pr-10 h-10 min-w-[120px]">
+<option>Todos</option>
+<option>Entrada</option>
+<option>Saída</option>
+</select>
+</div>
+<div class="flex flex-col gap-1">
+<label class="text-[11px] font-bold text-on-surface-variant uppercase tracking-wider ml-1">Categoria</label>
+<select class="bg-surface-container-lowest border-none rounded-lg text-xs font-medium focus:ring-2 focus:ring-primary/20 pr-10 h-10 min-w-[140px]">
+<option>Todas</option>
+<option>Ração</option>
+<option>Químicos</option>
+<option>Insumos</option>
+</select>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="h-10 px-4 flex items-center gap-2 bg-secondary-container text-on-secondary-container rounded-lg text-xs font-bold hover:opacity-90 transition-all">
+<span class="material-symbols-outlined text-sm">upload_file</span>
+                        Importar NF-e
+                    </button>
+<button class="h-10 px-4 flex items-center gap-2 bg-surface-container-highest text-on-surface-variant rounded-lg text-xs font-bold hover:bg-slate-200 transition-all">
+<span class="material-symbols-outlined text-sm">remove_circle</span>
+                        Nova Saída
+                    </button>
+<button class="h-10 px-5 flex items-center gap-2 bg-gradient-to-br from-primary to-primary-container text-white rounded-lg text-xs font-bold shadow-lg shadow-sky-900/10 hover:scale-[1.02] transition-all">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">add_circle</span>
+                        Nova Entrada
+                    </button>
+</div>
+</div>
+<!-- Data Grid (High Density) -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-high border-b border-outline-variant/10">
+<th class="px-4 py-3 text-[11px] font-bold text-on-surface-variant uppercase tracking-widest">Data/Hora</th>
+<th class="px-4 py-3 text-[11px] font-bold text-on-surface-variant uppercase tracking-widest">Tipo</th>
+<th class="px-4 py-3 text-[11px] font-bold text-on-surface-variant uppercase tracking-widest">Descrição</th>
+<th class="px-4 py-3 text-[11px] font-bold text-on-surface-variant uppercase tracking-widest">Categoria</th>
+<th class="px-4 py-3 text-[11px] font-bold text-on-surface-variant uppercase tracking-widest text-right">Qtd (kg/un)</th>
+<th class="px-4 py-3 text-[11px] font-bold text-on-surface-variant uppercase tracking-widest text-right">Custo Unit (R$)</th>
+<th class="px-4 py-3 text-[11px] font-bold text-on-surface-variant uppercase tracking-widest text-right">Total (R$)</th>
+<th class="px-4 py-3 text-[11px] font-bold text-on-surface-variant uppercase tracking-widest">Responsável</th>
+<th class="px-4 py-3 text-[11px] font-bold text-on-surface-variant uppercase tracking-widest">Viveiro</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/10">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low transition-colors group cursor-pointer">
+<td class="px-4 py-2 compact-grid-text font-medium">14 Out, 08:30</td>
+<td class="px-4 py-2">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-sky-100 text-sky-700">Entrada</span>
+</td>
+<td class="px-4 py-2 compact-grid-text text-on-surface">Ração Crescimento Lote #442 (32% Prot)</td>
+<td class="px-4 py-2 compact-grid-text text-on-surface-variant">Ração</td>
+<td class="px-4 py-2 compact-grid-text font-bold text-right">500.00</td>
+<td class="px-4 py-2 compact-grid-text text-right">R$ 4,20</td>
+<td class="px-4 py-2 compact-grid-text font-bold text-right text-on-surface">R$ 2.100,00</td>
+<td class="px-4 py-2 compact-grid-text">Carlos Alberto</td>
+<td class="px-4 py-2 compact-grid-text">—</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low transition-colors group cursor-pointer">
+<td class="px-4 py-2 compact-grid-text font-medium">14 Out, 09:15</td>
+<td class="px-4 py-2">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-orange-100 text-orange-700">Saída</span>
+</td>
+<td class="px-4 py-2 compact-grid-text text-on-surface">Fomento Algas Marinho - Revitalizador</td>
+<td class="px-4 py-2 compact-grid-text text-on-surface-variant">Químicos</td>
+<td class="px-4 py-2 compact-grid-text font-bold text-right">15.00</td>
+<td class="px-4 py-2 compact-grid-text text-right">R$ 85,00</td>
+<td class="px-4 py-2 compact-grid-text font-bold text-right text-on-surface">R$ 1.275,00</td>
+<td class="px-4 py-2 compact-grid-text">Marta Silva</td>
+<td class="px-4 py-2 compact-grid-text text-sky-600 font-medium">V04 - Berçário 2</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low transition-colors group cursor-pointer">
+<td class="px-4 py-2 compact-grid-text font-medium">14 Out, 10:00</td>
+<td class="px-4 py-2">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-orange-100 text-orange-700">Saída</span>
+</td>
+<td class="px-4 py-2 compact-grid-text text-on-surface">Ração Crescimento Lote #442 (32% Prot)</td>
+<td class="px-4 py-2 compact-grid-text text-on-surface-variant">Ração</td>
+<td class="px-4 py-2 compact-grid-text font-bold text-right">120.00</td>
+<td class="px-4 py-2 compact-grid-text text-right">R$ 4,20</td>
+<td class="px-4 py-2 compact-grid-text font-bold text-right text-on-surface">R$ 504,00</td>
+<td class="px-4 py-2 compact-grid-text">Operador #12</td>
+<td class="px-4 py-2 compact-grid-text text-sky-600 font-medium">V08 - Engorda</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-low transition-colors group cursor-pointer">
+<td class="px-4 py-2 compact-grid-text font-medium">14 Out, 11:20</td>
+<td class="px-4 py-2">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-sky-100 text-sky-700">Entrada</span>
+</td>
+<td class="px-4 py-2 compact-grid-text text-on-surface">Cal Hidratada - Controle pH</td>
+<td class="px-4 py-2 compact-grid-text text-on-surface-variant">Insumos</td>
+<td class="px-4 py-2 compact-grid-text font-bold text-right">1000.00</td>
+<td class="px-4 py-2 compact-grid-text text-right">R$ 0,95</td>
+<td class="px-4 py-2 compact-grid-text font-bold text-right text-on-surface">R$ 950,00</td>
+<td class="px-4 py-2 compact-grid-text">Carlos Alberto</td>
+<td class="px-4 py-2 compact-grid-text">—</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Footer (Summary) -->
+<div class="bg-surface-container py-3 px-6 flex justify-between items-center text-on-surface-variant">
+<div class="text-[11px] font-bold uppercase tracking-widest">
+                        Exibindo 24 de 1.450 registros
+                    </div>
+<div class="flex gap-8">
+<div class="flex items-center gap-2">
+<span class="text-[10px] uppercase font-bold text-slate-500">Total Período</span>
+<span class="compact-grid-text font-bold text-on-surface">R$ 4.829,00</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-[10px] uppercase font-bold text-slate-500">Média Valor</span>
+<span class="compact-grid-text font-bold text-on-surface">R$ 1.207,25</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Floating AI Copilot (Authority: JSON & User Message) -->
+<div class="fixed bottom-8 right-8 z-50 flex flex-col items-end gap-3 max-w-sm">
+<div class="glass-ai rounded-xl p-4 shadow-[0_12px_32px_-4px_rgba(0,30,47,0.12)] border border-white/50 animate-pulse-slow">
+<div class="flex items-start gap-3">
+<div class="p-1.5 bg-primary rounded-lg text-white">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+<div class="flex-1">
+<p class="text-[13px] font-medium leading-tight text-on-surface">
+                            Notei que o consumo de Ração Crescimento aumentou 12% no Setor Norte. Deseja programar uma nova entrada para evitar ruptura?
+                        </p>
+<div class="mt-3 flex gap-2">
+<button class="px-3 py-1.5 bg-primary text-white text-[11px] font-bold rounded-md hover:opacity-90 transition-all">Sim, agendar</button>
+<button class="px-3 py-1.5 bg-surface-container-high text-on-surface-variant text-[11px] font-bold rounded-md hover:bg-slate-200 transition-all">Analisar dados</button>
+</div>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-[10px] font-bold uppercase tracking-widest text-primary drop-shadow-sm">Cam AI Copilot</span>
+<button class="bg-white/70 backdrop-blur-xl p-4 rounded-full shadow-2xl hover:scale-110 hover:shadow-sky-500/20 transition-all text-sky-600">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</button>
+</div>
+</div>
+</main>
+</body></html>

@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Viveiro V-04 | Precision Aqua</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-primary-fixed": "#001e2f",
+              "on-secondary-fixed-variant": "#234b64",
+              "tertiary-container": "#de8712",
+              "surface-container-high": "#e7e8e9",
+              "on-primary-fixed-variant": "#004c6e",
+              "surface-container-highest": "#e1e3e4",
+              "primary-container": "#0ea5e9",
+              "error": "#ba1a1a",
+              "on-surface": "#191c1d",
+              "on-error-container": "#93000a",
+              "primary": "#006591",
+              "on-primary": "#ffffff",
+              "inverse-surface": "#2e3132",
+              "surface": "#f8f9fa",
+              "surface-container-lowest": "#ffffff",
+              "primary-fixed": "#c9e6ff",
+              "surface-bright": "#f8f9fa",
+              "tertiary": "#8a5100",
+              "surface-dim": "#d9dadb",
+              "outline": "#6e7881",
+              "on-tertiary-fixed": "#2c1600",
+              "background": "#f8f9fa",
+              "outline-variant": "#bec8d2",
+              "on-secondary-container": "#3d637d",
+              "on-error": "#ffffff",
+              "inverse-on-surface": "#f0f1f2",
+              "on-surface-variant": "#3e4850",
+              "on-background": "#191c1d",
+              "surface-container": "#edeeef",
+              "on-tertiary-container": "#4d2b00",
+              "tertiary-fixed": "#ffdcbd",
+              "secondary-fixed-dim": "#a5cbe9",
+              "secondary": "#3c627d",
+              "on-secondary-fixed": "#001e2f",
+              "surface-tint": "#006591",
+              "secondary-fixed": "#c9e6ff",
+              "on-primary-container": "#003751",
+              "inverse-primary": "#89ceff",
+              "surface-variant": "#e1e3e4",
+              "on-tertiary-fixed-variant": "#693c00",
+              "secondary-container": "#b8dffe",
+              "surface-container-low": "#f3f4f5",
+              "error-container": "#ffdad6",
+              "on-tertiary": "#ffffff",
+              "tertiary-fixed-dim": "#ffb86e",
+              "primary-fixed-dim": "#89ceff",
+              "on-secondary": "#ffffff"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .glass-ai { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(12px); }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .editable-cell:focus { outline: 2px solid #006591; background: white; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- TopNavBar -->
+<header class="w-full top-0 sticky z-40 bg-slate-50 dark:bg-slate-900 flex justify-between items-center px-6 h-16 w-full">
+<div class="flex items-center gap-8">
+<span class="text-xl font-bold text-sky-900 dark:text-sky-100">Precision Aqua</span>
+<nav class="hidden md:flex items-center gap-6 font-inter tracking-tight text-sm">
+<a class="text-sky-700 dark:text-sky-400 font-semibold border-b-2 border-sky-700 dark:border-sky-400 pb-1" href="#">Farms</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-sky-600 transition-colors" href="#">Ponds</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-sky-600 transition-colors" href="#">Inventory</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-sky-600 transition-colors" href="#">Reports</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 rounded-full transition-colors text-slate-500">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 rounded-full transition-colors text-slate-500">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden bg-slate-200">
+<img alt="User profile" data-alt="professional headshot of a marine biologist in outdoor daylight, soft focus background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3Vvm8wGt-spOHXisStHeq4Ha_6qOGZqkmYKtAzw_5pGKK9q3C0trhrZGkSaD0wSq2edIQIbykoYT5e_seTrNx85-W5JidgmI7WB62WxkRm-ULjorycmpHYK0l-7UWwAIEi-e9IKmUErxy62R7GyxsYi-tZY2GZRoaprFNG9MmwljUf6dBLiEeA8EAgbI6TLzpqLFOpM2lDYsbgflhM3hfgpI1XUcSLch3TiWYwRHuv7UglkfSr-GSUCCMNMXqmuFTpWjwNm3cFnE"/>
+</div>
+</div>
+</header>
+<div class="flex min-h-[calc(100vh-64px)]">
+<!-- SideNavBar -->
+<aside class="hidden md:flex flex-col border-r border-slate-200 dark:border-slate-800 h-screen w-64 fixed left-0 top-0 pt-16 bg-slate-50 dark:bg-slate-900 z-30">
+<div class="px-6 py-8">
+<div class="flex items-center gap-3 mb-1">
+<div class="w-10 h-10 bg-primary-container rounded-lg flex items-center justify-center text-white">
+<span class="material-symbols-outlined">waves</span>
+</div>
+<div>
+<h2 class="text-lg font-bold text-sky-900 leading-tight">Viveiro V04</h2>
+<p class="text-[10px] font-semibold text-sky-600 uppercase tracking-widest">Active Cycle</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 font-inter text-xs font-medium">
+<a class="text-slate-600 dark:text-slate-400 px-4 py-3 hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center gap-3 transition-all opacity-80 hover:opacity-100" href="#">
+<span class="material-symbols-outlined text-lg">dashboard</span> Dashboard
+                </a>
+<a class="bg-sky-100 dark:bg-sky-900/30 text-sky-800 dark:text-sky-200 border-l-4 border-sky-600 px-4 py-3 flex items-center gap-3 transition-all" href="#">
+<span class="material-symbols-outlined text-lg">waves</span> Water Quality
+                </a>
+<a class="text-slate-600 dark:text-slate-400 px-4 py-3 hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center gap-3 transition-all opacity-80 hover:opacity-100" href="#">
+<span class="material-symbols-outlined text-lg">restaurant</span> Feeding
+                </a>
+<a class="text-slate-600 dark:text-slate-400 px-4 py-3 hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center gap-3 transition-all opacity-80 hover:opacity-100" href="#">
+<span class="material-symbols-outlined text-lg">straighten</span> Biometry
+                </a>
+<a class="text-slate-600 dark:text-slate-400 px-4 py-3 hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center gap-3 transition-all opacity-80 hover:opacity-100" href="#">
+<span class="material-symbols-outlined text-lg">sailing</span> Harvest
+                </a>
+<a class="text-slate-600 dark:text-slate-400 px-4 py-3 hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center gap-3 transition-all opacity-80 hover:opacity-100" href="#">
+<span class="material-symbols-outlined text-lg">payments</span> Financials
+                </a>
+</nav>
+<div class="p-4">
+<button class="w-full bg-primary text-white py-2.5 rounded-lg font-semibold text-sm flex items-center justify-center gap-2 shadow-lg shadow-sky-900/10">
+<span class="material-symbols-outlined text-sm">add_circle</span> Add Log
+                </button>
+</div>
+<footer class="mt-auto border-t border-slate-200 dark:border-slate-800 p-4 font-inter text-xs font-medium">
+<a class="text-slate-600 dark:text-slate-400 px-4 py-2 hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center gap-3 transition-all opacity-80 hover:opacity-100 mb-1" href="#">
+<span class="material-symbols-outlined text-lg">help</span> Support
+                </a>
+<a class="text-slate-600 dark:text-slate-400 px-4 py-2 hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center gap-3 transition-all opacity-80 hover:opacity-100" href="#">
+<span class="material-symbols-outlined text-lg">logout</span> Sign Out
+                </a>
+</footer>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 md:ml-64 p-8 bg-surface">
+<!-- Breadcrumbs & Header -->
+<div class="mb-8">
+<div class="flex justify-between items-start mb-2">
+<nav class="flex text-[10px] font-bold tracking-widest text-on-surface-variant uppercase">
+<span>Farms</span>
+<span class="mx-2 text-outline-variant">/</span>
+<span>Águas Claras</span>
+<span class="mx-2 text-outline-variant">/</span>
+<span class="text-primary">V-001</span>
+</nav>
+<div class="flex gap-3">
+<button class="px-4 py-1.5 border border-outline-variant text-on-surface-variant rounded-md text-xs font-bold uppercase tracking-widest hover:bg-surface-container-high transition-colors">
+                            Cancel
+                        </button>
+<button class="px-4 py-1.5 bg-primary text-white rounded-md text-xs font-bold uppercase tracking-widest shadow-lg shadow-sky-900/10 hover:bg-sky-700 transition-colors">
+                            Save Changes
+                        </button>
+</div>
+</div>
+<div class="flex justify-between items-end">
+<div>
+<div class="flex items-center gap-2 group">
+<h1 class="text-3xl font-extrabold text-on-primary-fixed tracking-tight outline-none focus:ring-2 focus:ring-primary/20 rounded px-1" contenteditable="true">Viveiro V-001</h1>
+<span class="material-symbols-outlined text-outline-variant text-lg opacity-0 group-hover:opacity-100 cursor-pointer transition-opacity">edit</span>
+</div>
+<p class="text-on-surface-variant font-medium outline-none focus:ring-2 focus:ring-primary/20 rounded px-1 mt-1" contenteditable="true">Lote #2024-C3 • Litopenaeus vannamei</p>
+</div>
+<div class="flex gap-2">
+<span class="px-3 py-1 bg-primary-fixed text-on-primary-fixed-variant rounded-full text-[11px] font-bold flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span> IN CYCLE
+                        </span>
+<span class="px-3 py-1 bg-surface-container-high text-on-surface-variant rounded-full text-[11px] font-bold">
+                            LAST UPDATED: 2 MIN AGO
+                        </span>
+</div>
+</div>
+</div>
+<!-- Top Section: Editable KPIs -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-10">
+<!-- KPI Card 1 -->
+<div class="bg-surface-container-lowest p-5 rounded-xl border-l-4 border-primary shadow-sm group hover:ring-1 hover:ring-primary/30 transition-all">
+<div class="flex justify-between items-start mb-2">
+<p class="text-on-surface-variant text-[11px] font-bold uppercase tracking-wider">Days of Culture</p>
+<span class="material-symbols-outlined text-outline-variant text-base opacity-0 group-hover:opacity-100 cursor-pointer">edit</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="text-3xl font-bold text-on-surface outline-none" contenteditable="true">45</span>
+<span class="text-on-surface-variant text-sm font-medium">days</span>
+</div>
+<div class="mt-4 h-1.5 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary" style="width: 45%"></div>
+</div>
+</div>
+<!-- KPI Card 2 -->
+<div class="bg-surface-container-lowest p-5 rounded-xl border-l-4 border-primary shadow-sm group hover:ring-1 hover:ring-primary/30 transition-all">
+<div class="flex justify-between items-start mb-2">
+<p class="text-on-surface-variant text-[11px] font-bold uppercase tracking-wider">Estimated Biomass</p>
+<span class="material-symbols-outlined text-outline-variant text-base opacity-0 group-hover:opacity-100 cursor-pointer">edit</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="text-3xl font-bold text-on-surface outline-none" contenteditable="true">12.5</span>
+<span class="text-on-surface-variant text-sm font-medium">tons</span>
+</div>
+<p class="text-[11px] text-primary font-semibold mt-2 outline-none" contenteditable="true">+0.8t since last week</p>
+</div>
+<!-- KPI Card 3 -->
+<div class="bg-surface-container-lowest p-5 rounded-xl border-l-4 border-primary shadow-sm group hover:ring-1 hover:ring-primary/30 transition-all">
+<div class="flex justify-between items-start mb-2">
+<p class="text-on-surface-variant text-[11px] font-bold uppercase tracking-wider">Density</p>
+<span class="material-symbols-outlined text-outline-variant text-base opacity-0 group-hover:opacity-100 cursor-pointer">edit</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="text-3xl font-bold text-on-surface outline-none" contenteditable="true">85</span>
+<span class="text-on-surface-variant text-sm font-medium">shrimp/m²</span>
+</div>
+<p class="text-[11px] text-on-surface-variant font-semibold mt-2 outline-none" contenteditable="true">Target: 80-90/m²</p>
+</div>
+<!-- KPI Card 4 -->
+<div class="bg-surface-container-lowest p-5 rounded-xl border-l-4 border-primary shadow-sm group hover:ring-1 hover:ring-primary/30 transition-all">
+<div class="flex justify-between items-start mb-2">
+<p class="text-on-surface-variant text-[11px] font-bold uppercase tracking-wider">Mortality Alert</p>
+<span class="material-symbols-outlined text-outline-variant text-base opacity-0 group-hover:opacity-100 cursor-pointer">edit</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="text-3xl font-bold text-on-surface outline-none" contenteditable="true">0.5</span>
+<span class="text-on-surface-variant text-sm font-medium">%</span>
+</div>
+<span class="mt-2 inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-green-100 text-green-700 cursor-pointer">LOW RISK</span>
+</div>
+</div>
+<!-- Middle Section: Visual Analytics & Controls -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-10">
+<div class="lg:col-span-2 bg-surface-container-lowest p-6 rounded-xl shadow-sm relative overflow-hidden">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-bold text-on-surface text-lg">Environmental Parameters (24h)</h3>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-3 bg-surface-container-low px-3 py-1.5 rounded-lg border border-outline-variant/20">
+<label class="text-[10px] font-bold text-on-surface-variant uppercase">DO Threshold</label>
+<input class="w-12 text-center text-xs font-bold text-primary bg-transparent border-none focus:ring-0 p-0" type="text" value="4.5"/>
+<button class="bg-primary text-white p-1 rounded-sm hover:bg-sky-700 transition-colors">
+<span class="material-symbols-outlined text-xs leading-none">bolt</span>
+</button>
+</div>
+<div class="flex gap-4">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-primary"></span>
+<span class="text-[11px] font-bold text-on-surface-variant uppercase">Oxygen (DO)</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-secondary-container"></span>
+<span class="text-[11px] font-bold text-on-surface-variant uppercase">Temp (°C)</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Chart Placeholder -->
+<div class="h-64 w-full bg-surface-container-low rounded-lg relative flex items-end px-4 py-8">
+<div class="absolute inset-0 flex flex-col justify-between py-8 px-4 pointer-events-none">
+<div class="border-t border-outline-variant/10 w-full"></div>
+<div class="border-t border-outline-variant/10 w-full"></div>
+<div class="border-t border-outline-variant/10 w-full"></div>
+<div class="border-t border-outline-variant/10 w-full"></div>
+</div>
+<svg class="absolute inset-0 h-full w-full px-4 py-8 overflow-visible" preserveaspectratio="none" viewbox="0 0 100 100">
+<path d="M 0 40 Q 15 35, 25 55 T 50 65 T 75 75 T 100 85" fill="none" stroke="#006591" stroke-width="2.5"></path>
+<path d="M 0 60 Q 20 62, 40 58 T 60 55 T 80 57 T 100 60" fill="none" stroke="#b8dffe" stroke-width="2.5"></path>
+</svg>
+<div class="absolute bottom-2 left-4 right-4 flex justify-between text-[10px] font-bold text-outline uppercase tracking-wider">
+<span>00:00</span><span>06:00</span><span>12:00</span><span>18:00</span><span>Now</span>
+</div>
+</div>
+</div>
+<!-- Cam AI Integration Card -->
+<div class="glass-ai p-6 rounded-xl shadow-2xl shadow-sky-900/10 border border-outline-variant/20 flex flex-col">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-primary text-xl">auto_awesome</span>
+<h4 class="font-bold text-primary text-sm uppercase tracking-widest">Cam AI Insights</h4>
+</div>
+<div class="flex-1 space-y-4">
+<div class="bg-white/40 p-3 rounded-lg border border-white/60 group hover:border-primary/40 transition-colors">
+<div class="flex justify-between items-start mb-1">
+<span class="font-bold text-primary text-xs uppercase tracking-tight">Critical Trend</span>
+<span class="material-symbols-outlined text-[14px] text-outline-variant opacity-0 group-hover:opacity-100 cursor-pointer">edit</span>
+</div>
+<p class="text-sm text-on-surface font-medium leading-relaxed outline-none focus:ring-1 focus:ring-primary/20 p-0.5 rounded" contenteditable="true">
+                                Oxigênio caiu 10% nas últimas 2 horas. Recomenda-se ligar o aerador 03 para manter níveis acima de 4.5 mg/L.
+                            </p>
+</div>
+<div class="bg-tertiary-container/10 p-3 rounded-lg border border-tertiary-container/20 group hover:border-tertiary-container/40 transition-colors">
+<div class="flex justify-between items-start mb-1">
+<p class="text-[11px] text-tertiary font-bold uppercase">Growth Forecast</p>
+<span class="material-symbols-outlined text-[14px] text-outline-variant opacity-0 group-hover:opacity-100 cursor-pointer">edit</span>
+</div>
+<p class="text-sm text-on-tertiary-container font-medium outline-none focus:ring-1 focus:ring-tertiary-container/20 p-0.5 rounded" contenteditable="true">
+                                Projeção de biometria indica peso médio de 14.2g no próximo Sábado (+1.2g vs média).
+                            </p>
+</div>
+</div>
+<button class="mt-6 w-full py-2 bg-on-primary-fixed text-white rounded-md text-xs font-bold uppercase tracking-widest hover:bg-slate-800 transition-colors">
+                        Ask AI Assistant
+                    </button>
+</div>
+</div>
+<!-- Bottom Section: Data Grids (Inline Editable) -->
+<div class="grid grid-cols-1 xl:grid-cols-2 gap-8">
+<!-- Feeding Log -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden">
+<div class="px-6 py-4 flex justify-between items-center bg-surface-container-low border-b border-outline-variant/15">
+<h3 class="font-bold text-on-surface text-sm uppercase tracking-wider flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">restaurant</span> Feeding Log
+                        </h3>
+<div class="flex gap-4">
+<button class="text-[10px] font-bold text-primary uppercase tracking-widest hover:underline">Add Entry</button>
+<button class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest hover:underline">Download CSV</button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left font-inter border-collapse">
+<thead>
+<tr class="bg-surface-container-lowest">
+<th class="px-6 py-3 text-[10px] font-bold text-on-surface-variant uppercase tracking-widest border-b border-outline-variant/15">Date/Time</th>
+<th class="px-6 py-3 text-[10px] font-bold text-on-surface-variant uppercase tracking-widest border-b border-outline-variant/15">Feed Type</th>
+<th class="px-6 py-3 text-[10px] font-bold text-on-surface-variant uppercase tracking-widest border-b border-outline-variant/15">Qty (kg)</th>
+<th class="px-6 py-3 text-[10px] font-bold text-on-surface-variant uppercase tracking-widest border-b border-outline-variant/15">Method</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/15 text-xs font-medium text-on-surface">
+<tr class="hover:bg-sky-50 transition-colors group">
+<td class="px-6 py-4 outline-none editable-cell" contenteditable="true">Oct 24, 08:00</td>
+<td class="px-6 py-4 outline-none editable-cell" contenteditable="true">BioMar Grow 2.0</td>
+<td class="px-6 py-4 outline-none editable-cell font-bold" contenteditable="true">45.0</td>
+<td class="px-6 py-4">
+<select class="bg-blue-50 text-blue-700 text-[10px] font-bold border-none rounded py-0.5 px-2 focus:ring-0 cursor-pointer">
+<option selected="">AUTO</option>
+<option>MANUAL</option>
+</select>
+</td>
+</tr>
+<tr class="hover:bg-sky-50 transition-colors group">
+<td class="px-6 py-4 outline-none editable-cell" contenteditable="true">Oct 23, 16:30</td>
+<td class="px-6 py-4 outline-none editable-cell" contenteditable="true">BioMar Grow 2.0</td>
+<td class="px-6 py-4 outline-none editable-cell font-bold" contenteditable="true">42.5</td>
+<td class="px-6 py-4">
+<select class="bg-orange-50 text-orange-700 text-[10px] font-bold border-none rounded py-0.5 px-2 focus:ring-0 cursor-pointer">
+<option>AUTO</option>
+<option selected="">MANUAL</option>
+</select>
+</td>
+</tr>
+<tr class="hover:bg-sky-50 transition-colors group">
+<td class="px-6 py-4 outline-none editable-cell" contenteditable="true">Oct 23, 08:00</td>
+<td class="px-6 py-4 outline-none editable-cell" contenteditable="true">BioMar Grow 2.0</td>
+<td class="px-6 py-4 outline-none editable-cell font-bold" contenteditable="true">45.0</td>
+<td class="px-6 py-4">
+<select class="bg-blue-50 text-blue-700 text-[10px] font-bold border-none rounded py-0.5 px-2 focus:ring-0 cursor-pointer">
+<option selected="">AUTO</option>
+<option>MANUAL</option>
+</select>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Biometry History -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden">
+<div class="px-6 py-4 flex justify-between items-center bg-surface-container-low border-b border-outline-variant/15">
+<h3 class="font-bold text-on-surface text-sm uppercase tracking-wider flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">straighten</span> Biometry History
+                        </h3>
+<button class="text-[10px] font-bold text-primary uppercase tracking-widest hover:underline">Add New Record</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left font-inter border-collapse">
+<thead>
+<tr class="bg-surface-container-lowest">
+<th class="px-6 py-3 text-[10px] font-bold text-on-surface-variant uppercase tracking-widest border-b border-outline-variant/15">Date</th>
+<th class="px-6 py-3 text-[10px] font-bold text-on-surface-variant uppercase tracking-widest border-b border-outline-variant/15">Avg Weight (g)</th>
+<th class="px-6 py-3 text-[10px] font-bold text-on-surface-variant uppercase tracking-widest border-b border-outline-variant/15">Growth (g/w)</th>
+<th class="px-6 py-3 text-[10px] font-bold text-on-surface-variant uppercase tracking-widest border-b border-outline-variant/15">Survival %</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/15 text-xs font-medium text-on-surface">
+<tr class="hover:bg-sky-50 transition-colors group">
+<td class="px-6 py-4 outline-none editable-cell" contenteditable="true">Oct 21, 2024</td>
+<td class="px-6 py-4 outline-none editable-cell font-bold" contenteditable="true">12.50</td>
+<td class="px-6 py-4 outline-none editable-cell text-green-600 font-bold" contenteditable="true">+1.45</td>
+<td class="px-6 py-4 outline-none editable-cell" contenteditable="true">98.2%</td>
+</tr>
+<tr class="hover:bg-sky-50 transition-colors group">
+<td class="px-6 py-4 outline-none editable-cell" contenteditable="true">Oct 14, 2024</td>
+<td class="px-6 py-4 outline-none editable-cell font-bold" contenteditable="true">11.05</td>
+<td class="px-6 py-4 outline-none editable-cell text-green-600 font-bold" contenteditable="true">+1.20</td>
+<td class="px-6 py-4 outline-none editable-cell" contenteditable="true">98.5%</td>
+</tr>
+<tr class="hover:bg-sky-50 transition-colors group">
+<td class="px-6 py-4 outline-none editable-cell" contenteditable="true">Oct 07, 2024</td>
+<td class="px-6 py-4 outline-none editable-cell font-bold" contenteditable="true">9.85</td>
+<td class="px-6 py-4 outline-none editable-cell text-green-600 font-bold" contenteditable="true">+1.10</td>
+<td class="px-6 py-4 outline-none editable-cell" contenteditable="true">99.0%</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- FloatingAI -->
+<div class="fixed bottom-8 right-8 z-50 cursor-pointer rounded-xl p-4 bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl shadow-2xl shadow-sky-900/10 group transition-all hover:scale-105 hover:bg-white active:scale-95">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-sky-600 dark:text-sky-400 group-hover:animate-pulse">auto_awesome</span>
+<span class="text-sky-900 dark:text-sky-100 font-inter text-sm font-bold tracking-tight">Cam AI Assistant</span>
+</div>
+</div>
+</body></html>
